@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<section class="container-fuid">
+
+    <nav class="title">
+        <h1>{% block title %}Lista de Libros{% endblock %}</h1>
+        <a href="{{ url_for('book.create') }}" class="btn btn-success">Nuevo</a>
+    </nav>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col">Portada</th>
+                <th class="col">Descripción</th>
+                <th class="col">Estado</th>
+                <th class="col">Puntuación</th>
+                <th class="col" colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books | reverse %}
+                {% if g.user.id == book.created_by %}
+                <tr>
+                    <td class="content-project">
+                        <img src="{{ url_for('static', filename = book.image ) }}">
+                    </td>
+                    <td>
+                        <h5 class="star">{{ book.title }} - {{ book.author }}</h5>
+                        <p class="text_align">{{ book.desc }}</p>
+                        <h6 class="time">{{ book.created.strftime('%d de %B %Y') }}</h6>
+                        <br>
+                    </td>
+                    <td>
+                        {% if book.state == false %}
+                            <span class="text-warning star">Incompleto</span>
+                        {% else %}
+                            <span class="text-success star">Completado</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for star in range(book.punctuation) %}
+                        <p class="star">⭐</p>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('book.update', id = book.id)}}" class="btn btn-info btn-sm">Editar</a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('book.delete', id = book.id)}}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+                {% endif%}
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</section>
+{% endblock %}

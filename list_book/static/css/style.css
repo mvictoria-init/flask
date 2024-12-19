@@ -1,0 +1,69 @@
+.listadisima{
+    width: 100%;
+    padding: 20px;
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    margin: 20px;
+}
+
+.title h1{
+    width: 90%;
+    text-align: center;
+}
+
+.title a{
+    width: 10%;
+    box-sizing: border-box;
+    margin: 20px;
+    justify-self: end;
+}
+
+.content-project{
+    display: flex;
+}
+.content-project img{
+    width: 160px;
+    height: 248px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    margin: 30px;
+    box-sizing: border-box;
+}
+
+table .col{
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.star {
+    text-align: center;
+    padding: 10px;
+}
+
+.time{
+    justify-self: end;
+}
+
+.text_align{
+    text-align: justify;
+}
+
+.form-group{
+    margin: 20px;
+}
+
+nav .navbar a{
+    color: black;
+}
+
+td, tfoot, th, thead{
+    border-style: none;
+}
+
+.img{
+    width: 55%;
+}
